@@ -34,7 +34,7 @@ public class ShoppingAuto {
 
     @AfterSuite
     public void closeDriver(){
-       //driver.quit();
+       driver.quit();
     }
 
     @Test
