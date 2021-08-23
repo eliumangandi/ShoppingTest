@@ -1,4 +1,4 @@
-package com.applaudostudios.shoppingtest.pojo;
+package shoppingtest.locate;
 
 /*
    This class enables to use constants to locate elements in the page

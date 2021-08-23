@@ -1,6 +1,5 @@
-package com.applaudostudios.shoppingtest.utils;
+package shoppingtest.utils;
 
-import com.applaudostudios.shoppingtest.pojo.LocatorShop;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import shoppingtest.locate.LocatorShop;
 
 import java.util.List;
 
@@ -33,7 +33,8 @@ public abstract class WebDriverActions {
     @param driver WebDriver object
      */
     public static void waitWhile(WebDriver driver) {
-        new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver,100);
+        //driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
     }
 
     /*
@@ -42,7 +43,7 @@ public abstract class WebDriverActions {
     @param element WebElement object
      */
     public static void waitForElement(WebDriver driver, WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver,100);
+        WebDriverWait wait = new WebDriverWait(driver,1000);
         wait.until(ExpectedConditions.visibilityOfAllElements(element));
     }
 
@@ -134,7 +135,7 @@ public abstract class WebDriverActions {
     this method delete item from cart
     @param driver WebDriver object
      */
-    public static void deleteItem( WebDriver driver ){
+    public static void deleteItem( WebDriver driver ) {
         WebElement deleteLink = driver.findElement( By.xpath( LocatorShop.DELETE_ITEM_XPATH ) );
         WebDriverActions.scriptExecutor(driver,deleteLink);
         WebDriverActions.waitWhile( driver );

@@ -1,4 +1,4 @@
-package com.applaudostudios.shoppingtest.pojo;
+package com.applaudostudios.charactersapi.pojo;
 
 import java.util.Arrays;
 
@@ -39,8 +39,8 @@ public class CharacterAPI {
     @param portrayed
      */
     public CharacterAPI(String char_id, String name, String birthday,
-                      String[] occupations, String img, String status,
-                      String[] appearance, String nickname, String portrayed) {
+                        String[] occupations, String img, String status,
+                        String[] appearance, String nickname, String portrayed) {
         this.char_id = char_id;
         this.name = name;
         this.birthday = birthday;

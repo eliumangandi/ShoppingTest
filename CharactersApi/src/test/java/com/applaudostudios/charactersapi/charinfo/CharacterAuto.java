@@ -1,7 +1,7 @@
-package com.applaudostudios.shoppingtest.charinfo;
+package com.applaudostudios.charactersapi.charinfo;
 
-import com.applaudostudios.shoppingtest.pojo.CharacterAPI;
-import com.applaudostudios.shoppingtest.utils.PrintInformation;
+import com.applaudostudios.charactersapi.pojo.CharacterAPI;
+import com.applaudostudios.charactersapi.utils.PrintInformation;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;

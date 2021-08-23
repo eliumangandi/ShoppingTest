@@ -1,6 +1,7 @@
-package com.applaudostudios.shoppingtest.utils;
+package com.applaudostudios.charactersapi.utils;
 
-import com.applaudostudios.shoppingtest.pojo.CharacterAPI;
+import com.applaudostudios.charactersapi.pojo.CharacterAPI;
+
 /*
    This class provides methods to print CharacterAPI objects information
    @author: Yonatan E Juarez
