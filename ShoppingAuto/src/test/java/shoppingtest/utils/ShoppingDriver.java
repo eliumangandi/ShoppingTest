@@ -1,4 +1,4 @@
-package shoppingtest.shoppingcart;
+package shoppingtest.utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -33,7 +33,7 @@ public class ShoppingDriver {
 
     @AfterClass
     public void closeDriver(){
-        driver.quit();
+        //driver.quit();
     }
 
 

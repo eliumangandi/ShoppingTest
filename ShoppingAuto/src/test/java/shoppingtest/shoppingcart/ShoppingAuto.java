@@ -3,6 +3,7 @@ package shoppingtest.shoppingcart;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import shoppingtest.locate.LocatorShop;
+import shoppingtest.utils.ShoppingDriver;
 
 /*
    This class enables to use testng framework
@@ -47,10 +48,20 @@ public class ShoppingAuto extends ShoppingDriver {
     @Test(priority=4)
     public void scrollToStoreInfo(){
         //scroll to store information
-        webActions.scrollDown();
-        webActions.scrollDown();
-        Assert.assertEquals(LocatorShop.storeInfo(webActions.getDriver()),"Store information");
 
+        Assert.assertEquals(
+                LocatorShop.storeInfo(
+                        webActions, "//*[@id='block_contact_infos']/div/h4"),
+                "Store information");
+        Assert.assertEquals(LocatorShop.storeInfo(
+                webActions, "//*[@id='block_contact_infos']/div/ul/li[1]"),
+                "Selenium Framework, Research Triangle Park, North Carolina, USA");
+        Assert.assertEquals(LocatorShop.storeInfo(
+                        webActions, "//*[@id='block_contact_infos']/div/ul/li[2]/span"),
+                "(347) 466-7432");
+        Assert.assertEquals(LocatorShop.storeInfo(
+                        webActions, "//*[@id='block_contact_infos']/div/ul/li[3]/span/a"),
+                "support@seleniumframework.com");
     }
 
 }

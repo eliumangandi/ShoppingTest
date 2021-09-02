@@ -111,8 +111,11 @@ public class LocatorShop {
         return driver.findElement(By.xpath(LocatorShop.SEARCH_FAIL_XPATH)).getText();
     }
 
-    public static String storeInfo(WebDriver driver){
-        return driver.findElement(By.xpath("//*[@id='block_contact_infos']/div/h4")).getText();
+    public static String storeInfo(WebDriverActions driverActions, String xpath){
+        WebElement element = driverActions.getDriver().findElement(By.xpath(xpath));
+        driverActions.elementMouseHover(element);
+        return element.getText();
     }
+
 
 }

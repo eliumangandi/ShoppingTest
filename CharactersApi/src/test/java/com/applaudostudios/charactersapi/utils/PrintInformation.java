@@ -40,4 +40,21 @@ public class PrintInformation {
         System.out.println("------------------------------------------------------");
     }
 
+    /*
+    this method given find the charId from a list of CharacterAPI
+    @param charApi CharacterAPI object
+     */
+    public static String findCharId(String name, CharacterAPI[] charApiS){
+        String charId = "";
+
+        for (CharacterAPI charApi : charApiS) {
+            if (charApi.getName() == name){
+                charId = charApi.getChar_id();
+                break;
+            }
+        }
+
+        return charId;
+    }
+
 }
