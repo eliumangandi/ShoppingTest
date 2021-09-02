@@ -15,7 +15,7 @@ public class ShoppingAuto extends ShoppingDriver {
     @Test(priority=0)
     public void searchSuccess(){
 
-        LocatorShop.searchFunctionality(webActions, webActions.getDriver(), "Printed");
+        LocatorShop.searchFunctionality(webActions, "Printed");
         webActions.scrollDown();
         Assert.assertEquals(LocatorShop.searchResult(webActions.getDriver()),"5 results have been found.");
 
@@ -25,7 +25,7 @@ public class ShoppingAuto extends ShoppingDriver {
     public void searchFail(){
 
         webActions.returnHome(URL_WEB);
-        LocatorShop.searchFunctionality(webActions, webActions.getDriver(), "hey");
+        LocatorShop.searchFunctionality(webActions, "hey");
         Assert.assertEquals(LocatorShop.searchFailResult(webActions.getDriver()),"No results were found for your search \"hey\"");
     }
 
@@ -33,7 +33,7 @@ public class ShoppingAuto extends ShoppingDriver {
     public void addToCart(){
         //add to cart
         webActions.returnHome(URL_WEB);
-        String label = LocatorShop.addItem(webActions,webActions.getDriver(), 3);
+        String label = LocatorShop.addItem(webActions, 3);
         Assert.assertEquals(label,"Cart 1 Product");
 
     }

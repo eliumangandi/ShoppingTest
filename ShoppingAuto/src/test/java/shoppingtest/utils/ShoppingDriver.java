@@ -33,7 +33,7 @@ public class ShoppingDriver {
 
     @AfterClass
     public void closeDriver(){
-        //driver.quit();
+        driver.quit();
     }
 
 

@@ -43,10 +43,10 @@ public class LocatorShop {
     @param driver WebDriver object
     @param message String number
      */
-    public static void searchFunctionality(WebDriverActions webAction, WebDriver driver, String message){
-        WebElement searchInput = driver.findElement(By.id(LocatorShop.SEARCH_INPUT_ID));
+    public static void searchFunctionality(WebDriverActions webAction, String message){
+        WebElement searchInput = webAction.getDriver().findElement(By.id(LocatorShop.SEARCH_INPUT_ID));
         searchInput.sendKeys(message);
-        WebElement searchIcon = driver.findElement(By.xpath(LocatorShop.SEARCH_ICON_XPATH));
+        WebElement searchIcon = webAction.getDriver().findElement(By.xpath(LocatorShop.SEARCH_ICON_XPATH));
         webAction.scriptExecutor(searchIcon);
     }
 
@@ -56,21 +56,21 @@ public class LocatorShop {
     @param position integer number
     @return String
      */
-    public static String addItem(WebDriverActions webActions,WebDriver driver, int position){
-        WebElement lineItem = LocatorShop.findItem(driver, position);
+    public static String addItem(WebDriverActions webActions, int position){
+        WebElement lineItem = LocatorShop.findItem(webActions.getDriver(), position);
         webActions.elementMouseHover(lineItem);
 
         WebElement moreBtn = lineItem.findElement(By.xpath(LocatorShop.MORE_XPATH));
 
         webActions.scriptExecutor(moreBtn);
 
-        WebElement addCartBtn = driver.findElement(By.name(LocatorShop.ADD_NAME));
+        WebElement addCartBtn = webActions.getDriver().findElement(By.name(LocatorShop.ADD_NAME));
         webActions.scriptExecutor(addCartBtn);
 
-        driver.navigate().refresh();
-        WebElement quantity = driver.findElement(By.xpath(LocatorShop.CART_LABEL_XPATH));
+        webActions.getDriver().navigate().refresh();
+        WebElement quantity = webActions.getDriver().findElement(By.xpath(LocatorShop.CART_LABEL_XPATH));
         quantity.click();
-        quantity = driver.findElement(By.xpath(LocatorShop.CART_LABEL_XPATH));
+        quantity = webActions.getDriver().findElement(By.xpath(LocatorShop.CART_LABEL_XPATH));
         return quantity.getText();
     }
 
