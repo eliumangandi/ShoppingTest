@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import shoppingtest.locate.LocatorShop;
 import shoppingtest.utils.WebDriverActions;
 
 import java.util.concurrent.TimeUnit;
@@ -18,7 +19,9 @@ public class ShoppingDriver {
 
     public WebDriver driver;
 
-    public WebDriverActions webActions;
+    public LocatorShop locatorShop;
+
+
 
 
     @BeforeClass
@@ -28,7 +31,7 @@ public class ShoppingDriver {
         driver.get(URL_WEB);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
-        webActions = new WebDriverActions(driver);
+        locatorShop = new LocatorShop(driver);
     }
 
     @AfterClass

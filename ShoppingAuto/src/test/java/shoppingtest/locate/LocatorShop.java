@@ -12,7 +12,7 @@ import java.util.List;
    @author: Yonatan E Juarez
    @version: 08/19/2021
  */
-public class LocatorShop {
+public class LocatorShop extends WebDriverActions {
 
     public static final String CONTENT_CLASS = "tab-content";
 
@@ -38,16 +38,20 @@ public class LocatorShop {
 
     public static final String SEARCH_ICON_XPATH = "//*[@id='searchbox']/button";
 
+    public LocatorShop(WebDriver driver) {
+        super(driver);
+    }
+
     /*
-    this method enables search item from search input
-    @param driver WebDriver object
-    @param message String number
-     */
-    public static void searchFunctionality(WebDriverActions webAction, String message){
-        WebElement searchInput = webAction.getDriver().findElement(By.id(LocatorShop.SEARCH_INPUT_ID));
+        this method enables search item from search input
+        @param driver WebDriver object
+        @param message String number
+         */
+    public  void searchFunctionality( String message){
+        WebElement searchInput = driver.findElement(By.id(LocatorShop.SEARCH_INPUT_ID));
         searchInput.sendKeys(message);
-        WebElement searchIcon = webAction.getDriver().findElement(By.xpath(LocatorShop.SEARCH_ICON_XPATH));
-        webAction.scriptExecutor(searchIcon);
+        WebElement searchIcon = driver.findElement(By.xpath(LocatorShop.SEARCH_ICON_XPATH));
+        this.scriptExecutor(searchIcon);
     }
 
     /*
@@ -56,21 +60,21 @@ public class LocatorShop {
     @param position integer number
     @return String
      */
-    public static String addItem(WebDriverActions webActions, int position){
-        WebElement lineItem = LocatorShop.findItem(webActions.getDriver(), position);
-        webActions.elementMouseHover(lineItem);
+    public  String addItem( int position){
+        WebElement lineItem = this.findItem(position);
+        this.elementMouseHover(lineItem);
 
         WebElement moreBtn = lineItem.findElement(By.xpath(LocatorShop.MORE_XPATH));
 
-        webActions.scriptExecutor(moreBtn);
+        this.scriptExecutor(moreBtn);
 
-        WebElement addCartBtn = webActions.getDriver().findElement(By.name(LocatorShop.ADD_NAME));
-        webActions.scriptExecutor(addCartBtn);
+        WebElement addCartBtn = this.getDriver().findElement(By.name(LocatorShop.ADD_NAME));
+        this.scriptExecutor(addCartBtn);
 
-        webActions.getDriver().navigate().refresh();
-        WebElement quantity = webActions.getDriver().findElement(By.xpath(LocatorShop.CART_LABEL_XPATH));
+        this.getDriver().navigate().refresh();
+        WebElement quantity = this.getDriver().findElement(By.xpath(LocatorShop.CART_LABEL_XPATH));
         quantity.click();
-        quantity = webActions.getDriver().findElement(By.xpath(LocatorShop.CART_LABEL_XPATH));
+        quantity = this.getDriver().findElement(By.xpath(LocatorShop.CART_LABEL_XPATH));
         return quantity.getText();
     }
 
@@ -78,10 +82,10 @@ public class LocatorShop {
     this method delete item from cart
     @param driver WebDriver object
      */
-    public static String deleteItem( WebDriver driver, WebDriverActions webActions ) {
+    public String deleteItem( ) {
         WebElement table = driver.findElement(new By.ById(LocatorShop.TABLE_DELETE_ID));
         WebElement deleteLink = table.findElement( By.xpath( LocatorShop.DELETE_ITEM_XPATH ) );
-        webActions.scriptExecutor(deleteLink);
+        this.scriptExecutor(deleteLink);
 
         WebElement quantity = driver.findElement(By.xpath(LocatorShop.CART_LABEL_XPATH));
         quantity.click();
@@ -96,26 +100,42 @@ public class LocatorShop {
     @param itemPosition integer number
     @return WebElement
      */
-    public static WebElement findItem(WebDriver driver, int itemPosition){
+    public  WebElement findItem(int itemPosition){
         WebElement divContent;
         divContent = driver.findElement( By.className( LocatorShop.CONTENT_CLASS ));
         List<WebElement> lineList = divContent.findElements(By.tagName("li"));
         return lineList.get(itemPosition);
     }
 
-    public static String searchResult(WebDriver driver){
+    public  String searchResult(){
         return driver.findElement(By.className(LocatorShop.SEARCH_COUNTING_XPATH)).getText();
     }
 
-    public static String searchFailResult(WebDriver driver){
+    public  String searchFailResult(){
         return driver.findElement(By.xpath(LocatorShop.SEARCH_FAIL_XPATH)).getText();
     }
 
-    public static String storeInfo(WebDriverActions driverActions, String xpath){
-        WebElement element = driverActions.getDriver().findElement(By.xpath(xpath));
-        driverActions.elementMouseHover(element);
+    public  String storeInfo(){
+        WebElement element = driver.findElement(By.xpath("//*[@id='block_contact_infos']/div/h4"));
+        this.elementMouseHover(element);
         return element.getText();
     }
 
+    public  String storeAddress(){
+        WebElement element = driver.findElement(By.xpath("//*[@id='block_contact_infos']/div/ul/li[1]"));
+        this.elementMouseHover(element);
+        return element.getText();
+    }
+    public  String storeContact(){
+        WebElement element = driver.findElement(By.xpath("//*[@id='block_contact_infos']/div/ul/li[2]/span"));
+        this.elementMouseHover(element);
+        return element.getText();
+    }
+
+    public  String storeEmail(){
+        WebElement element = driver.findElement(By.xpath("//*[@id='block_contact_infos']/div/ul/li[3]/span/a"));
+        this.elementMouseHover(element);
+        return element.getText();
+    }
 
 }

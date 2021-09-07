@@ -15,25 +15,25 @@ public class ShoppingAuto extends ShoppingDriver {
     @Test(priority=0)
     public void searchSuccess(){
 
-        LocatorShop.searchFunctionality(webActions, "Printed");
-        webActions.scrollDown();
-        Assert.assertEquals(LocatorShop.searchResult(webActions.getDriver()),"5 results have been found.");
+        locatorShop.searchFunctionality( "Printed");
+        locatorShop.scrollDown();
+        Assert.assertEquals(locatorShop.searchResult(),"5 results have been found.");
 
     }
 
     @Test(priority=1)
     public void searchFail(){
 
-        webActions.returnHome(URL_WEB);
-        LocatorShop.searchFunctionality(webActions, "hey");
-        Assert.assertEquals(LocatorShop.searchFailResult(webActions.getDriver()),"No results were found for your search \"hey\"");
+        locatorShop.returnHome(URL_WEB);
+        locatorShop.searchFunctionality("hey");
+        Assert.assertEquals(locatorShop.searchFailResult(),"No results were found for your search \"hey\"");
     }
 
     @Test(priority=2)
     public void addToCart(){
         //add to cart
-        webActions.returnHome(URL_WEB);
-        String label = LocatorShop.addItem(webActions, 3);
+        locatorShop.returnHome(URL_WEB);
+        String label = locatorShop.addItem( 3);
         Assert.assertEquals(label,"Cart 1 Product");
 
     }
@@ -41,7 +41,7 @@ public class ShoppingAuto extends ShoppingDriver {
     @Test(priority=3)
     public void deleteItem(){
         //delete item
-        String label = LocatorShop.deleteItem(webActions.getDriver(), webActions);
+        String label = locatorShop.deleteItem();
         Assert.assertEquals(label,"Cart (empty)");
     }
 
@@ -50,17 +50,13 @@ public class ShoppingAuto extends ShoppingDriver {
         //scroll to store information
 
         Assert.assertEquals(
-                LocatorShop.storeInfo(
-                        webActions, "//*[@id='block_contact_infos']/div/h4"),
+                locatorShop.storeInfo(),
                 "Store information");
-        Assert.assertEquals(LocatorShop.storeInfo(
-                webActions, "//*[@id='block_contact_infos']/div/ul/li[1]"),
+        Assert.assertEquals(locatorShop.storeAddress(),
                 "Selenium Framework, Research Triangle Park, North Carolina, USA");
-        Assert.assertEquals(LocatorShop.storeInfo(
-                        webActions, "//*[@id='block_contact_infos']/div/ul/li[2]/span"),
+        Assert.assertEquals(locatorShop.storeContact( ),
                 "(347) 466-7432");
-        Assert.assertEquals(LocatorShop.storeInfo(
-                        webActions, "//*[@id='block_contact_infos']/div/ul/li[3]/span/a"),
+        Assert.assertEquals(locatorShop.storeEmail(),
                 "support@seleniumframework.com");
     }
 

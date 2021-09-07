@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class WebDriverActions {
 
-    private WebDriver driver = null;
+    public WebDriver driver = null;
 
     public WebDriverActions(WebDriver driver){
         this.driver = driver;
