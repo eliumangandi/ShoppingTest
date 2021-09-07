@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import shoppingtest.locate.LocatorShop;
-import shoppingtest.utils.WebDriverActions;
 
 import java.util.concurrent.TimeUnit;
 
