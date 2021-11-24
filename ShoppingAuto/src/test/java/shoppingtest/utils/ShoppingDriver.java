@@ -10,11 +10,11 @@ import java.util.concurrent.TimeUnit;
 
 public class ShoppingDriver {
 
-    public static final String URL_WEB = "http://automationpractice.com/index.php";
+    public static final String URL_WEB = "https://www.zubale.com/";
 
     public static final String DRIVER_TYPE = "webdriver.chrome.driver";
 
-    public static final String DRIVER_LOCATION = "src/test/resources/chromedriver/v92chromedriver.exe";
+    public static final String DRIVER_LOCATION = "src/test/resources/chromedriver/v96chromedriver.exe";
 
     public WebDriver driver;
 
